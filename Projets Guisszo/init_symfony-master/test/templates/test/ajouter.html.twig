@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+{% form_theme formEmploye 'bootstrap_4_layout.html.twig' %}
+{% block title %}
+
+    {% if editMode %}
+
+        Modification
+
+    {% else %}
+    
+        Page d'ajout
+
+    {% endif %}
+
+{% endblock %}
+{% block body %}
+<div class="container">
+        <h1>
+                {% if editMode %}
+
+                Modifier un Employé
+        
+            {% else %}
+            
+                Ajout d'un Employé
+        
+            {% endif %}
+        </h1>
+</div>
+    {{form_start(formEmploye)}}
+    
+    {{form_row(formEmploye.matricule,{'attr':{'placeholder':"matricule"}})}}
+    {{form_row(formEmploye.nom_complet,{'attr':{'placeholder':"Nom Complet"}})}}
+    {{form_row(formEmploye.datenais,{'attr':{'placeholder':"date de naissance"}})}}
+    {{form_row(formEmploye.salaire,{'attr':{'placeholder':"montant salaire"}})}}
+    {{form_row(formEmploye.services)}}
+    <button type="submit" class="btn btn-success">
+
+        {% if editMode %}
+            
+            Modifier
+        
+        {% else %}
+        
+            Ajouter Employé
+        
+        {% endif %}
+    </button>
+   
+    {{form_end(formEmploye)}}
+{% endblock %}

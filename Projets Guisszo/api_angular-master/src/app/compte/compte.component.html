@@ -1,0 +1,71 @@
+<app-navbar></app-navbar>
+
+<!-- partie corps du component-->
+
+<div class="container pt-5">
+  <div class="row">
+    <div class="col-lg mx-auto">
+      <div class="card rouded-0">
+        <div class="card-header">
+          <h3 style="color: black; font-weight:300px;"> Création de Compte</h3>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6" style="width: auto;">
+              <form class="form" [formGroup]="CompteForm" (ngSubmit)="createCpt(CompteForm.value)">
+                <div class="col-md-6 mx-auto">
+  
+                  <div class="form-group">
+                    <label for="" style="color: black; float:left;">Ninea</label>
+                    <input type="text" [(ngModel)]="Comptes.ninea" formControlName="ninea" name="ninea"
+                    (keyup)="findNinea($event)" class="form-control rounded-0" required>
+  
+                    <!-- ERREURES TRAITEMENT-->
+                    <div class="container" style="background-color:rgb(151, 131, 131)">
+                      <mat-error *ngFor="let validation of compte_validation_messsage.ninea">
+                        <mat-error class="error-message"
+                          *ngIf="CompteForm.get('ninea').hasError(validation.type) && (CompteForm.get('ninea').dirty || CompteForm.get('ninea').touched)">
+                          {{validation.message}}</mat-error>
+                      </mat-error>
+                    </div>
+                  </div>
+                </div>
+  
+  
+                <button type="submit" class="btn btn-success float-right"
+                  [disabled]="!CompteForm.valid" *ngIf="afficher">Enregistrer</button>
+  
+              </form>
+            </div>
+            <div class="col-md-6" *ngIf="afficher">
+              <table id="infoPartenaire" style="border: none;background-color:#a3a4d3; width:100%;height:25%">
+                <tr>
+                  <th>Infos Partenaire</th>
+                  <th>Infos Utilisateur</th>
+                </tr>
+                <tr>
+                  <td>Ninea: {{ninea.ninea}}</td>
+                  <td>Raison Sociale: {{ninea.raisonSociale}}</td>
+                </tr>
+                <tr>
+                  <td>Nom complet: {{nomcomplet}}</td>
+                  <td>Username: {{username}}</td>
+                </tr>
+  
+                <tr>
+                  <td>Telephone: {{tel}}</td>
+                  <td>Email: {{email}}</td>
+                </tr>
+  
+              </table>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+<div class="clearfix"></div>
+<app-footer></app-footer>

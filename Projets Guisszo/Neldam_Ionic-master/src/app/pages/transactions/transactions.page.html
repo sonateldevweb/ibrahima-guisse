@@ -1,0 +1,120 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title [routerLink]="['/dashboard']"><ion-icon size="medium" name="arrow-back" [routerLink]="['/dashboard']" routerLinkActive="router-link-active" ></ion-icon>
+      Transactions</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding form-content">
+
+  <ion-row class="ion-padding">
+    
+        <ion-button shape="round" size="default" color="secondary" (click)="afficherEnvoi()">Envoi <span><ion-icon name="send"></ion-icon></span></ion-button>
+        <ion-button shape="round" size="default" color="tertiary" (click)="afficherRetrait()">Retrait <span><ion-icon name="cash"></ion-icon></span></ion-button>
+      
+  </ion-row>
+  <form [formGroup]="TransactionForm" (ngSubmit)="Transactions(TransactionForm.value)">
+
+    <div class="form-group" *ngIf="!afficher">
+      <ion-item>
+        <ion-label position="floating" color="primary">Nom Expediteur</ion-label>
+        <ion-input type="text" formControlName="nomcompletExpediteur"></ion-input>
+      </ion-item>
+      <div class="validation-errors">
+        <ng-container *ngFor="let validation of transaction_validation_message.nomcompletExpediteur">
+          <div class="error-message"
+            *ngIf="TransactionForm.get('nomcompletExpediteur').hasError(validation.type) && (TransactionForm.get('nomcompletExpediteur').dirty || TransactionForm.get('nomcompletExpediteur').touched)">
+            <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
+
+      <ion-item>
+        <ion-label position="floating" color="primary">Tel Expediteur</ion-label>
+        <ion-input type="text" formControlName="telExpediteur"></ion-input>
+      </ion-item>
+      <div class="validation-errors">
+        <ng-container *ngFor="let validation of transaction_validation_message.telExpediteur">
+          <div class="error-message"
+            *ngIf="TransactionForm.get('telExpediteur').hasError(validation.type) && (TransactionForm.get('telExpediteur').dirty || TransactionForm.get('telExpediteur').touched)">
+            <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
+      <ion-item>
+        <ion-label position="floating" color="primary">Nom Recepteur</ion-label>
+        <ion-input type="text" formControlName="nomcompletRecepteur"></ion-input>
+      </ion-item>
+      <div class="validation-errors">
+        <ng-container *ngFor="let validation of transaction_validation_message.nomcompletRecepteur">
+          <div class="error-message"
+            *ngIf="TransactionForm.get('nomcompletRecepteur').hasError(validation.type) && (TransactionForm.get('nomcompletRecepteur').dirty || TransactionForm.get('nomcompletRecepteur').touched)">
+            <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
+      <ion-item>
+        <ion-label position="floating" color="primary">Tel Recepteur</ion-label>
+        <ion-input type="text" formControlName="telRecepteur"></ion-input>
+      </ion-item>
+      <div class="validation-errors">
+        <ng-container *ngFor="let validation of transaction_validation_message.telRecepteur">
+          <div class="error-message"
+            *ngIf="TransactionForm.get('telRecepteur').hasError(validation.type) && (TransactionForm.get('telRecepteur').dirty || TransactionForm.get('telRecepteur').touched)">
+            <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
+      <ion-item>
+        <ion-label position="floating" color="primary">Montant</ion-label>
+        <ion-input #tarif (keyup)="trouvertarif($event)" type="text" formControlName="montant"></ion-input>
+      </ion-item>
+      <div class="validation-errors">
+        <ng-container *ngFor="let validation of transaction_validation_message.montant">
+          <div class="error-message"
+            *ngIf="TransactionForm.get('montant').hasError(validation.type) && (TransactionForm.get('montant').dirty || TransactionForm.get('montant').touched)">
+            <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
+
+    </div>
+    <!-- Div à afficher si on appui sur le boutton retrait-->
+    <div class="form-group" *ngIf="afficher">
+      <ion-item>
+        <ion-label position="floating" color="primary">Code Transaction</ion-label>
+        <ion-input (keyup)="findCode($event)" type="text" formControlName="codeTransaction"></ion-input>
+      </ion-item>
+      <div class="validation-errors">
+        <ng-container *ngFor="let validation of transaction_validation_message.codeTransaction">
+          <div class="error-message"
+            *ngIf="TransactionForm.get('codeTransaction').hasError(validation.type) && (TransactionForm.get('codeTransaction').dirty || TransactionForm.get('codeTransaction').touched)">
+            <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
+<!-- Div à afficher si le code de retrait existe-->
+      <div *ngIf="codeOK">
+        <ion-item>
+          <ion-label position="floating" color="primary">Num CNI</ion-label>
+          <ion-input type="text" formControlName="CNIrecepteur"></ion-input>
+        </ion-item>
+        <div class="validation-errors">
+          <ng-container *ngFor="let validation of transaction_validation_message.CNIrecepteur">
+            <div class="error-message"
+              *ngIf="TransactionForm.get('CNIrecepteur').hasError(validation.type) && (TransactionForm.get('CNIrecepteur').dirty || TransactionForm.get('CNIrecepteur').touched)">
+              <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="tarif"  class="ion-padding">
+      <p>
+        {{tarif}}
+      </p>
+    </div>
+    <ion-button shape="round" color="primary" type="submit" *ngIf="!afficher" >Envoyer</ion-button>
+    <ion-button shape="round" color="primary" type="submit" *ngIf="afficher" >Retrait</ion-button>
+  </form>
+</ion-content>

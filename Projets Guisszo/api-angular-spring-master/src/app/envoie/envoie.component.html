@@ -1,0 +1,128 @@
+<app-navbar></app-navbar>
+<!--Fin bar de navigation-->
+
+<div class="container pt-5" style="width: 80%;margin:auto;">
+    <mat-card>
+        <mat-card-title>
+            Envoi
+        </mat-card-title>
+        <div class="container" style="width: 80%;">
+
+            <div class="row">
+                <div class="col-md-6">
+                    <form [formGroup]="EnvoiForm" (ngSubmit)="envoi(EnvoiForm.value)" id="formdiv">
+                        <mat-card-content>
+
+                            <mat-form-field appearance="outline">
+                                <mat-label>Prenom Nom Expediteur</mat-label>
+                                <input matInput placeholder="Prenom Nom Expediteur"
+                                    [(ngModel)]="envoie.nomcompletExpediteur" name="nomcompletExpediteur"
+                                    formControlName="nomcompletExpediteur" required>
+                            </mat-form-field>
+
+                            <!-- ERREURES TRAITEMENT-->
+                            <mat-error *ngFor="let validation of  envoi_validation_message.nomcompletExpediteur">
+                                <mat-error class="error-message"
+                                    *ngIf="EnvoiForm.get('nomcompletExpediteur').hasError(validation.type) && (EnvoiForm.get('nomcompletExpediteur').dirty || EnvoiForm.get('nomcompletExpediteur').touched)">
+                                    {{validation.message}}</mat-error>
+                            </mat-error>
+
+                            <mat-form-field appearance="outline">
+                                <mat-label>Tel Expediteur</mat-label>
+                                <input matInput placeholder="Telephone Expediteur" [(ngModel)]="envoie.telExpediteur"
+                                    name="telExpediteur" formControlName="telExpediteur" required>
+                            </mat-form-field>
+
+                            <!-- ERREURES TRAITEMENT-->
+                            <mat-error *ngFor="let validation of  envoi_validation_message.telExpediteur">
+                                <mat-error class="error-message"
+                                    *ngIf="EnvoiForm.get('telExpediteur').hasError(validation.type) && (EnvoiForm.get('telExpediteur').dirty || EnvoiForm.get('telExpediteur').touched)">
+                                    {{validation.message}}</mat-error>
+                            </mat-error>
+
+                            <mat-form-field appearance="outline">
+                                <mat-label>Prenom Nom Recepteur</mat-label>
+                                <input matInput placeholder="Prenom et Nom Recepteur"
+                                    [(ngModel)]="envoie.nomcompletRecepteur" name="nomcompletRecepteur"
+                                    formControlName="nomcompletRecepteur" required>
+                            </mat-form-field>
+
+                            <!-- ERREURES TRAITEMENT-->
+                            <mat-error *ngFor="let validation of  envoi_validation_message.nomcompletRecepteur">
+                                <mat-error class="error-message"
+                                    *ngIf="EnvoiForm.get('nomcompletRecepteur').hasError(validation.type) && (EnvoiForm.get('nomcompletRecepteur').dirty || EnvoiForm.get('nomcompletRecepteur').touched)">
+                                    {{validation.message}}</mat-error>
+                            </mat-error>
+
+                            <mat-form-field appearance="outline">
+                                <mat-label>tel Recepteur</mat-label>
+                                <input matInput placeholder="Telephone Recepteur" [(ngModel)]="envoie.telRecepteur"
+                                    name="telRecepteur" formControlName="telRecepteur" required>
+                            </mat-form-field>
+
+                            <!-- ERREURES TRAITEMENT-->
+                            <mat-error *ngFor="let validation of  envoi_validation_message.telRecepteur">
+                                <mat-error class="error-message"
+                                    *ngIf="EnvoiForm.get('telRecepteur').hasError(validation.type) && (EnvoiForm.get('telRecepteur').dirty || EnvoiForm.get('telRecepteur').touched)">
+                                    {{validation.message}}</mat-error>
+                            </mat-error>
+
+                            <mat-form-field appearance="outline">
+                                <mat-label>Montant</mat-label>
+                                <input matInput placeholder="Montant a envoyer" [(ngModel)]="envoie.montant"
+                                    name="montant" formControlName="montant" required>
+                            </mat-form-field>
+
+                            <!-- ERREURES TRAITEMENT-->
+                            <mat-error *ngFor="let validation of  envoi_validation_message.montant">
+                                <mat-error class="error-message"
+                                    *ngIf="EnvoiForm.get('montant').hasError(validation.type) && (EnvoiForm.get('montant').dirty || EnvoiForm.get('montant').touched)">
+                                    {{validation.message}}</mat-error>
+                            </mat-error>
+
+                        </mat-card-content>
+                        <button mat-raised-button color="primary" type="submit"
+                            [disabled]="!EnvoiForm.valid">Envoyer</button>
+
+                    </form>
+                </div>
+                <div class="col-md-6 pt-5" *ngIf="afficher">
+                    <table id="infoPartenaire" style="border: 1px solid black; width:100%; margin:25px;">
+                        <tr>
+                            <th>Infos Expediteur</th>
+                            <th>Infos Guichetier</th>
+                        </tr>
+                        <tr>
+                            <td>nom Expediteur: <strong>{{envoie.nomcompletExpediteur}}</strong></td>
+                            <td>Nom Guichetier: <strong>{{nomcomplet}}</strong></td>
+
+                        </tr>
+                        <tr>
+                            <td>Nom Recepteur: <strong>{{envoie.nomcompletRecepteur}}</strong></td>
+                            <td>Username: <strong>{{username}}</strong></td>
+                        </tr>
+
+                        <tr>
+                            <td>Telephone Expediteur: <strong>{{envoie.telExpediteur}}</strong></td>
+                            <td>Telephone: <strong>{{tel}}</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Telephone Recepteur: <strong>{{envoie.telRecepteur}}</strong></td>
+                            <td>Email: <strong>{{email}}</strong></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">Code transaction: {{envoie.codeTransaction}}<br>
+                             Montant: <strong>{{envoie.montant}}</strong>
+                            </td>
+                        </tr>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </mat-card>
+</div>
+<!--Debut Footer-->
+
+<app-footer></app-footer>

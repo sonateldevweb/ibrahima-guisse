@@ -1,0 +1,69 @@
+section{
+    width: 100%;
+    height: 120vh;
+    background:url('../pages/img/bg2.jpg');
+    background-size: cover;
+    background-color: #2579df;
+}
+section h1{
+    margin: 0 0 20px;
+    color:#fff;
+    position: absolute;
+    top: 70%;
+    left: 40%;
+    transform: translate(-50%,-50%);
+    font-size: 30px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+.formulaire1{
+    float: right;
+    position: relative;
+    box-sizing: border-box;
+    padding: 50px 40px;
+    transition: .5s;
+}
+
+.formulaire1 input{
+    display: inline;
+    
+    padding: 10px 20px;
+
+    border-radius: 25px;
+    outline: none;
+    font-size: 14px;
+    letter-spacing: 1px;
+    border: none;
+    background: rgba(255, 255, 255, .1);
+    font-family: 'Roboto Condensed', sans-serif;
+
+}
+.formulaire1 input::placeholder{
+    color:#fff;    
+    text-transform: uppercase;
+}
+.formulaire1 input[type="submit"]{
+    color: #fff;
+    background: #0072ff;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.formulaire1 input[type="submit"]:hover{
+    background: #005aca;
+}
+.clearfix
+{
+clear:both;
+}
+#tab
+{
+    float: right;
+    width: 95%;
+    height: 90%;
+    color: #fff;
+    margin:2%;
+    padding-right: 3%;
+    padding-bottom: 30px; 
+}

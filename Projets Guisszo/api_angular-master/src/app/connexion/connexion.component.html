@@ -1,0 +1,29 @@
+
+<div class="container w-50 p-3">
+    <div class="row ">
+        <div class="col-lg mx-auto ">
+          <div class="card rouded-0">
+            <div class="card-header">
+              <h3 style="color:#2b3e51; font-weight:300px;">Bienvenue sur NeldaMOney</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
+
+<mat-card id="login-form-wrap" >
+    <h2>Authentification</h2>
+    <form id="login-form">
+      <p>
+      <input [(ngModel)]="register.username" type="text" id="username" name="username" placeholder="Username" required><em class="validation"><span></span><span></span></em>
+      </p>
+      <p>
+      <input [(ngModel)]="register.password" type="password" id="password" name="password" placeholder="Mot de passe" required><em class="validation"><span></span><span></span></em>
+      </p>
+      <p>
+      <input (click)="connexionUtil()" type="button" id="login" value="Se connecter">
+      </p>
+    </form>
+    <div id="create-account-wrap">
+    </div><!--create-account-wrap-->
+</mat-card><!--login-form-wrap-->

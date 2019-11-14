@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+{% block title %}Liste employés!{% endblock %}
+
+{% block body %}
+
+        <h1>Liste des employés</h1>
+</div>
+<div class="container">
+    <table id="example" class="table table-bordered table-hover table-stripe" style="width:100%">
+       <thead>
+            <th>matricule</th>
+            <th>Nom Complet</th>
+            <th>Date de naissance</th>
+            <th>Salaires</th>
+            <th>Services</th>
+            <th>Actions</th>
+            
+       </thead>
+       <tbody>
+           {% for employe in employes %}
+        <tr>
+            <td>{{ employe.matricule }}</td>
+            <td>{{ employe.NomComplet }}</td>
+            <td>{{ employe.datenais | date('d/m/Y') }}</td>
+            <td>{{ employe.salaire }}</td>
+            <td>{{ employe.services.libelle }}</td>
+            <td style="display: flex; align-content:center">
+                <a href="{{path('modif_Emp',{'id':employe.id})}}"><button class="btn btn-outline-info"><i class="fas fa-edit"></i></button></a>
+            
+             
+                <div id="ex1" class="modal" style="height:120px" >
+                    <p>Etes vous sûr de vouloir supprimer cet employé ?</p>
+                    
+                    <a href="{{path('supprimer',{'id':employe.id})}}"><button class="btn btn-outline-danger">Oui</button></a>
+                    <a href="#" rel="modal:close"> <button class="btn btn-outline-primary">Annuler</button></a>
+                </div>
+
+            <!-- Lien qui permet d'ouvrir le modal  -->
+                    <p><a href="#ex1" rel="modal:open"><button class="btn btn-outline-danger" style="margin-left: 10px"><i class="fas fa-trash"></i></button></a></p>
+            </td>
+        </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
+

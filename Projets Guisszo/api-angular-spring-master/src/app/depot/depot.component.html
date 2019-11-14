@@ -1,0 +1,64 @@
+<app-navbar></app-navbar>
+<!--Fin bar de navigation-->
+
+<div class="container pt-5" style="width: 80%;margin:auto;">
+    <mat-card>
+        <mat-card-title>
+            Depot
+        </mat-card-title>
+        <form [formGroup]="DepotForm" (ngSubmit) = "depot(DepotForm.value)">
+            <mat-card-content>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Numero compte</mat-label>
+                    <input matInput placeholder="Numero de compte" [(ngModel)]="Depots.numcompte"  
+                    
+                    name="numcompte" formControlName="numcompte" (keyup)="findCompte($event)" required>
+                </mat-form-field>
+
+                <!-- ERREURES TRAITEMENT-->
+                <mat-error *ngFor="let validation of part_validation_message.numcompte">
+                    <mat-error class="error-message"
+                        *ngIf="DepotForm.get('numcompte').hasError(validation.type) && (DepotForm.get('numcompte').dirty || DepotForm.get('numcompte').touched)">
+                        {{validation.message}}</mat-error>
+                </mat-error>
+                <div class="container" *ngIf="afficher">
+                    <table id="infoPartenaire" style="border: none;background-color:#c9c6c6; width:70%;height:25%" >
+                        <tr>
+                                <th>Infos Compte</th>
+                                <th>Infos Partenaire</th>
+                        </tr>
+                        <tr><td>Numero de Compte: {{compte.numcompte}}</td>
+                            <td>Raison Sociale: {{compte.partenaire.raisonSociale}}</td>
+                        </tr>
+                        
+                        <tr><td>Solde du Compte: {{compte.solde}}</td>
+                            <td>Ninea: {{compte.partenaire.ninea}}</td>
+                        </tr>
+                        
+                    </table>
+                </div>
+
+
+                <mat-form-field appearance="outline"  *ngIf="afficher" >
+                    <mat-label>Montant</mat-label>
+                    <input matInput placeholder="Montant du depot" [(ngModel)]="Depots.montant" name="montant" formControlName="montant" required>
+                </mat-form-field>
+
+                <!-- ERREURES TRAITEMENT-->
+                <mat-error *ngFor="let validation of part_validation_message.montant">
+                    <mat-error class="error-message"
+                        *ngIf="DepotForm.get('montant').hasError(validation.type) && (DepotForm.get('montant').dirty || DepotForm.get('montant').touched)">
+                        {{validation.message}}</mat-error>
+                </mat-error>
+
+            </mat-card-content>
+            <button mat-raised-button color="primary" type="submit" [disabled]="!DepotForm.valid">Deposer</button>
+
+        </form>
+
+    </mat-card>
+</div>
+<!--Debut Footer-->
+
+<app-footer></app-footer>

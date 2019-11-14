@@ -1,0 +1,294 @@
+body{
+    align-content: center;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background-image: url('/home/ibrahima/Bureau/web/img/background.png');
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    
+}
+#logo{
+    margin: 0;
+    padding: 0;
+    width:150px;
+    height: 150px;
+}
+
+#logo-conteneur
+{
+	align-items: center;
+    border: 2px solid blue;
+   
+    
+
+}
+
+#conteneur
+{
+    align-items: center;
+    margin: 5%;
+}
+
+/* MENU MENU ET DEROULEMENT*/
+
+#menu{
+    background-color: rgba(62, 120, 230, 0.801);
+    margin:2%;
+    
+}
+#menu ul
+{
+    margin: 0;
+    padding-top: 25px;
+    height: 80px;
+	align-items: center;
+    color: green;
+   
+    line-height: 25px;
+    font-size: 20px;
+    border-radius: 10px;
+}
+
+#menu li{
+list-style: none;
+float: left;
+position: relative;
+background-color: rgba(62, 120, 230, 0.78);
+margin-left:60px;
+margin-right: 60px;
+align-items: center;
+
+}
+
+#menu ul li a{
+    text-decoration: none;
+    width: 140px;
+    height: 30px;
+    color: rgb(24, 17, 17);
+    display: block;
+    align-items: center;
+    border:1px 0 rgb(36, 58, 47);
+}
+
+#menu ul ul {
+    position: absolute;
+    top: 25px;
+    visibility: hidden;
+}
+
+#menu ul li:hover ul{
+    visibility: visible;
+    
+}
+#menu li:hover{
+    background-color:rgba(62, 120, 230, 0.78);
+    
+}
+#menu li a:hover{
+    background-color: rgb(202, 202, 97);
+}
+/*FIN MENU*/
+
+
+#contenu
+{
+	align-items: center;
+   
+    background-image: url('/home/ibrahima/Bureau/web/img/vortex.jpg');
+    background-repeat:cover;
+    height: 600px;
+    display: inline-block;
+    width: 100%;
+    
+}
+
+#conteneur1{
+	width: 47%;
+	align-items: center;
+    border: 3px solid purple;
+    float: left;   
+    height: 90%;
+    margin-top: 5px; 
+    margin-bottom: 10px;
+    margin-left: 10px;
+    border-radius: 10px;
+    
+
+ 
+}
+#conteneur1:hover{
+    background-color: rgba(135, 224, 75, 0.6);
+}
+#conteneur2{
+	width: 47%;
+    align-items: center;
+    float: right;
+    height: 90%;
+    margin-top: 5px; 
+    margin-bottom: 10px;
+    margin-right:  10px;
+
+}
+ #sous-conteneur
+ {
+ 	border: 2px solid rgb(211, 43, 43);
+ 	margin: 5px;
+ 	height: 45%;
+ 	padding: 2px;
+    color: blue;
+    border-radius: 8px;
+    
+    
+ }
+ #sous-conteneur:hover{
+    background-color: rgba(84, 134, 228, 0.78);
+ }
+
+
+
+#baspage
+{
+	align-items: center;
+    border: 1px solid rgba(214, 117, 52, 0.747);
+    border-radius: 7px;
+
+}
+
+#baspage:hover{
+    background-color: rgba(97, 97, 223, 0.685);
+
+}
+
+ 
+#baspage ul a{
+	  list-style-type: none;
+	  text-decoration: none;
+	  margin: 100px;
+	  padding: 0;
+    
+}
+li {
+  display: inline;
+}
+
+
+@media screen and (max-width:680px){
+    body{
+        align-content: center;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        
+    }
+
+    #logo{
+        margin: 0;
+        padding: 0;
+        width:95px;
+        height: 95px;
+    }
+
+    #contenu
+{
+	align-items: center;
+    border: none;
+    height: 250px;
+    width: 100%;
+    margin: 1%;
+    display: block;
+}
+#conteneur1{
+    border: 5px solid purple; 
+    width: 100%;
+	align-items: center;
+    height: 90%;
+    padding: 0;
+   margin:auto;
+   border-bottom: 1px solid rgba(223, 164, 76, 0.815);
+    
+    
+    
+
+ 
+}
+#conteneur2{
+	width: 100%;
+	align-items: center;
+    height: 90%;
+    padding: 0;
+   margin:auto;
+   
+ }
+ #sous-conteneur
+ {
+ 	border: 2px solid black;
+ 	height: 45%;
+ 	padding: 2px;
+    color: blue;
+    border-bottom: 1px solid rgba(220, 236, 127, 0.815);
+    
+ }
+
+ #baspage {
+    display: none;
+  
+}
+#conteneur{
+    display: block;
+
+}
+
+
+
+#menu ul
+{
+    margin: 0;
+    padding-top: 25px;
+    height: 10px;
+	align-items: center;
+    color: green;
+   
+    line-height: 6px;
+    f
+}
+
+#menu li{
+list-style: none;
+
+position:relative;
+background-color:rgb(160, 99, 99);
+
+align-items:center;
+}
+
+#menu ul li a{
+    text-decoration: none;
+    width: 100px;
+    height: 30px;
+    color: rgb(24, 17, 17);
+    display: block;
+    text-align: center;
+    align-items: center;
+    border:1px 0 rgb(36, 58, 47);
+}
+
+#menu ul ul {
+    position: absolute;
+    top: 6px;
+    visibility: hidden;
+}
+
+#menu ul li:hover ul{
+    visibility: visible;
+    
+}
+#menu li:hover{
+    background-color: rgb(35, 99, 163);
+
+}
+#menu li a:hover{
+    background-color: rgb(202, 202, 97);
+}
+
+}

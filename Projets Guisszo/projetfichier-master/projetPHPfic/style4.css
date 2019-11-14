@@ -1,0 +1,90 @@
+.header
+{
+height: 10rem;
+border-bottom: 1px solid black;
+
+}
+.header h2
+{
+    text-align: center;
+   
+}
+.hauteur{
+    height: 1rem;
+}
+ ul 
+{
+    
+   position: absolute;
+   
+
+}
+ ul li
+{
+   
+    position: relative;
+    display: inline;
+    
+    
+}
+ ul li a
+{
+    
+    margin: 1rem;
+   list-style: none;
+   text-decoration: none;
+  
+}
+ #indexb{
+    margin: 0;
+    padding: 0;
+    background-image: url(des.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    align-content: center;
+}
+.conteneur{
+    background-attachment: fixed;
+box-align: center;
+align-content: center;
+align-items: center;
+margin:10%;
+margin-left: 35%;
+
+
+}
+.conteneur form input{
+    width:40%;
+    align-content: center;
+}
+
+.conteneur h2{
+    color:rgba(79, 145, 231, 0.808);
+}
+
+
+
+.jumbotron{
+    background-color: rgba(0, 0, 0, 0.795);
+}
+.jumbotron h2{
+   color:white;
+   font-weight: bold;
+   font-family: arial,sans-serif;
+}
+#entre{
+    border-radius: 2rem;
+   
+}
+.erreur{
+    font-weight: bold;
+    text-align: center;
+    color: red;
+   font-size: 1rem;
+    margin-top: -10%;
+}
+
+
+
+
+

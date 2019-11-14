@@ -1,0 +1,10 @@
+Chemise;1000;10;
+parfum;25000;8;
+t-shirt;5000;13;
+debardeur;3000;22;
+casquette;11000;7;
+calecon;5000;2;
+coffee;1200;50;
+laté;1500;12;
+capuchino;2000;10;
+chocolat;3000;12;

@@ -1,0 +1,19 @@
+body {
+    margin:0;
+  }
+p {
+    font-family: 'Lato', sans-serif;
+    letter-spacing: 1px;
+    font-size:14px;
+    color: #e7c9c9;
+    height: 2px;
+}
+.flex { /*Flexbox for containers*/
+    padding: 1%;
+  display: block;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  bottom: 0;
+  
+}

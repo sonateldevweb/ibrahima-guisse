@@ -1,0 +1,42 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title [routerLink]="['/dashboard']"><ion-icon size="medium" name="arrow-back" [routerLink]="['/dashboard']" routerLinkActive="router-link-active" ></ion-icon>
+          Mes Transactions</ion-title>
+      </ion-toolbar>
+</ion-header>
+<ion-row class="ion-padding">
+    
+  <ion-button shape="round" size="default" color="secondary" (click)="afficherTransEnvoi()"><span><ion-icon name="send"></ion-icon></span>  Les Envoi</ion-button>
+  <ion-button shape="round" size="default" color="tertiary" (click)="afficherTransRetrait()"><span><ion-icon name="cash"></ion-icon></span> Les Retrait</ion-button>
+
+</ion-row>
+<ion-segment (ionChange)="segmentChanged($event)" assertive>
+  <ion-segment-button value="transactions" (click)="afficherTrans()">
+    <ion-label>Transactions</ion-label>
+  </ion-segment-button>
+  <ion-segment-button value="commisions" (click)="afficherComm()" checked>
+    <ion-label>Commisions</ion-label>
+  </ion-segment-button>
+</ion-segment>
+<ion-content>
+    <div *ngIf="transact">
+      <ion-list>
+        <ion-item *ngFor="let t of transactions" detail>
+          <ion-label>
+            <h2><strong>Montant: {{t.montant}}</strong><br><small>Date -> {{t.SentAt || t.recevedAt | date :  "y-MM-d"}}</small></h2>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+     
+    </div>
+    <div *ngIf="!transact" >
+      <ion-list>
+        <ion-item *ngFor="let tr of transactions" detail>
+          <ion-label>
+            <h2><strong>Commision: {{tr.commissionEnv || tr.commissionRetrait}}</strong><br><small>Date -> {{tr.SentAt || tr.recevedAt | date :  "y-MM-d"}}</small></h2>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+      
+    </div>
+</ion-content>

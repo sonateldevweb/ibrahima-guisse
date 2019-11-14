@@ -1,0 +1,4 @@
+ibrahima;guisszo;pass;777274988;leguisse@gmail.com;admin;actif; 
+dieye;abdou;root;775601218;ptijey@gmail.com;user;actif;
+fatou;toufa;123;777251001;fatou@gmail.com;user;actif;
+elhadji;mister_d;1234;774456858;eldji22@hotmail.fr;admin;actif;

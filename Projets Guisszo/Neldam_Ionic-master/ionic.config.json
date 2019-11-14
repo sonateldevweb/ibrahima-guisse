@@ -1,0 +1,7 @@
+{
+  "name": "neldam-ionic",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

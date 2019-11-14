@@ -1,0 +1,80 @@
+<app-navbar></app-navbar>
+<!--Fin bar de navigation-->
+
+<div class="container pt-5" style="width: 80%;margin:auto;">
+    <mat-card>
+        <mat-card-title>
+            Retrait
+        </mat-card-title>
+       <div class="row">
+           <div class="col-md-6" >
+                <form [formGroup]="RetraitForm" (ngSubmit) = "Retrait(RetraitForm.value)">
+                        <mat-card-content>
+            
+                            <mat-form-field appearance="outline">
+                                <mat-label>Code de retrait</mat-label>
+                                <input matInput placeholder="Code de retrait" [(ngModel)]="retrait.codeTransaction"   
+                                name="codeTransaction" formControlName="codeTransaction"
+                                (keyup)="findCode($event)"  required>
+                            </mat-form-field>
+            
+                            <!-- ERREURES TRAITEMENT-->
+                            <mat-error *ngFor="let validation of part_validation_message.codeTransaction">
+                                <mat-error class="error-message"
+                                    *ngIf="RetraitForm.get('codeTransaction').hasError(validation.type) && (RetraitForm.get('codeTransaction').dirty || RetraitForm.get('codeTransaction').touched)">
+                                    {{validation.message}}</mat-error>
+                            </mat-error>
+            
+            
+                            <mat-form-field appearance="outline" *ngIf="afficher">
+                                <mat-label>CNI Recepteur</mat-label>
+                                <input matInput placeholder="CNIrecepteur du depot" [(ngModel)]="retrait.CNIrecepteur" name="CNIrecepteur" formControlName="CNIrecepteur" required>
+                            </mat-form-field>
+            
+                            <!-- ERREURES TRAITEMENT-->
+                            <mat-error *ngFor="let validation of part_validation_message.CNIrecepteur">
+                                <mat-error class="error-message"
+                                    *ngIf="RetraitForm.get('CNIrecepteur').hasError(validation.type) && (RetraitForm.get('CNIrecepteur').dirty || RetraitForm.get('CNIrecepteur').touched)">
+                                    {{validation.message}}</mat-error>
+                            </mat-error>
+            
+                        </mat-card-content>
+                        <button mat-raised-button color="primary" type="submit" [disabled]="!RetraitForm.valid" *ngIf="afficher">Retirer</button>
+            
+                    </form>
+            
+           </div>
+           <div class="col-md-6"  id="Aimprimer" *ngIf="afficher" #Aimprimer>
+                <table id="infoPartenaire" style="border:none;width:100%; ">
+                        <tr class="ligne">
+              <td class="titrecol"> <strong>Infos Guichetier:</strong></td>
+              <td class="second"><strong>Nom:</strong> {{nomcomplet}}</td>
+              <td class="second"><strong>Username:</strong> {{username}}</td>
+              <td class="second"><strong>Telephone:</strong> {{tel}}</td>
+            </tr>
+            <tr class="ligne">
+              <td class="second" class="titrecol"> <strong>Infos Expediteur:</strong></td>
+              <td class="second"><strong>Nom:</strong> {{codeTransaction.nomcompletExpediteur}}</td>
+              <td class="second"><strong>Telephone:</strong> {{codeTransaction.telExpediteur}}</td>
+            </tr>
+            <tr class="ligne">
+              <td class="titrecol"><strong>Infos recepteur:</strong></td>
+              <td class="second"><strong>Nom: </strong> {{codeTransaction.nomcompletRecepteur}}</td>
+              <td class="second"><strong>Montant:</strong> {{codeTransaction.montant}}</td>
+              <td class="second"><strong>Code: {{codeTransaction.codeTransaction}}</strong></td>
+
+            </tr>
+            <tr class="lignebas">
+              <td id="bastab"><em>Email: {{email}}</em></td>
+
+            </tr>
+                      </table>
+                      <button mat-raised-button color="primary" (click)="downloadPDF()" >imprimer</button>
+
+           </div>
+       </div>
+    </mat-card>
+</div>
+<!--Debut Footer-->
+
+<app-footer></app-footer>

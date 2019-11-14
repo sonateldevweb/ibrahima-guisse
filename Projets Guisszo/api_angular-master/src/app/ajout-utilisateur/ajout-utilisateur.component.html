@@ -1,0 +1,124 @@
+<app-navbar></app-navbar>
+
+<!-- partie corps du component-->
+
+<div class="container pt-3">
+  <div class="row p-1">
+    <div class="col-lg mx-auto">
+      <div class="card rouded-0">
+        <mat-card class="card-header">
+          <h3 style="color: black; font-weight:300px;"> Ajouter Utilisateur</h3>
+        </mat-card>
+        <div class="card-body">
+          <form class="form" #ImageForm="ngForm" (ngSubmit)="ajoutUtil(Image)">
+            <div class="row">
+              <div class="col-md-6 mx-auto">
+
+                <div class="form-group">
+                  <label style="color: black ; float:left;">Username</label>
+                  <input [(ngModel)]="utilisateur.username" [ngModelOptions]="{standalone: true}" name="username"
+                    type="text" id="username" #username="ngModel" class="form-control rounded-0" required>
+
+
+                  <div [hidden]="username.valid || username.pristine" class="alert alert-danger">
+                    le username est requis
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label style="color: black; float:left;">Password</label>
+                  <input [(ngModel)]="utilisateur.password" [ngModelOptions]="{standalone: true}" name="password"
+                    type="password" id="password" #password="ngModel" class="form-control rounded-0" required>
+
+                  <div [hidden]="password.valid || password.pristine" class="alert alert-danger">
+                    Le mot de passe est requis
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label style="color: black ; float:left;">Nom Complet</label>
+                  <input [(ngModel)]="utilisateur.nomcomplet" [ngModelOptions]="{standalone: true}" name="nomcomplet"
+                    type="text" id="nomcomplet" #nomcomplet="ngModel" class="form-control rounded-0" required>
+
+                  <div [hidden]="nomcomplet.valid || nomcomplet.pristine" class="alert alert-danger">
+                    ce champ est obligatoire
+                  </div>
+                </div>
+
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <label class="input-group-text" for="inputGroupSelect01">Roles</label>
+                  </div>
+                  <select [(ngModel)]="utilisateur.profil" [ngModelOptions]="{standalone: true}" class="custom-select"
+                    >
+                    <option selected>choisir...</option>
+                    <option *ngFor="let p of profiles" [value]="p.id">{{p.libelle}}</option>
+
+                  </select>
+                </div>
+                <div *ngIf="isPartenaire() || isPartAdmin() " class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <label class="input-group-text" for="inputGroupSelect01">compte</label>
+                  </div>
+                  <select [(ngModel)]="utilisateur.compte" [ngModelOptions]="{standalone: true}" class="custom-select"
+                    >
+                    <option selected>choisir...</option>
+                    <option *ngFor="let c of comptes" [value]="c.id">Num Compte:  {{c.numcompte}}</option>
+
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-md-6 mx-auto">
+
+                <div class="form-group">
+                  <label style="color: black; float:left;">Adresse</label>
+                  <input [(ngModel)]="utilisateur.adresse" [ngModelOptions]="{standalone: true}" name="adresse"
+                    type="text" id="adresse" #adresse="ngModel" class="form-control rounded-0" required>
+
+                  <div [hidden]="adresse.valid || adresse.pristine" class="alert alert-danger">
+                    ce champ est obligatoire
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label style="color: black ; float:left;">Telephone</label>
+                  <input [(ngModel)]="utilisateur.tel" name="tel" [ngModelOptions]="{standalone: true}" type="tel"
+                    id="tel" #tel="ngModel" class="form-control rounded-0" required>
+                  <div [hidden]="tel.valid || tel.pristine" class="alert alert-danger">
+                    ce champ est obligatoire
+                  </div>
+
+                </div>
+                <div class="form-group">
+                  <label style="color: black; float:left;">Email</label>
+                  <input [(ngModel)]="utilisateur.email" [ngModelOptions]="{standalone: true}" name="email" type="Email"
+                    id="email" #email="ngModel" class="form-control rounded-0" required>
+
+                  <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
+                    ce champ est obligatoire
+                  </div>
+
+                </div>
+                <div>
+                </div>
+                <div class="input-group">
+                  <img [src]="imageUrl" alt="default" style="width:100px; height:100px;">
+
+
+                  <label class="custom-file-label">
+                    <input type="file" name="imageName" [(ngModel)]="utilisateur.imageName"
+                      [ngModelOptions]="{standalone: true}" #Image accept="image/*"
+                      (change)="handleFileInput($event.target.files)">
+
+                  </label>
+                </div>
+              </div>
+
+            </div>
+            <button type="submit" class="btn btn-success float-right" [disabled]="Image.value==''">Enregistrer</button>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

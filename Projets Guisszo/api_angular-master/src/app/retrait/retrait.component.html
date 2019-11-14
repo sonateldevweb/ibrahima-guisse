@@ -1,0 +1,81 @@
+<app-navbar></app-navbar>
+<!--Fin bar de navigation-->
+
+<div class="container pt-5" style="width: 80%;margin:auto;">
+    <mat-card>
+        <mat-card-title>
+            Retrait
+        </mat-card-title>
+       <div class="row">
+           <div class="col-md-6" >
+                <form [formGroup]="RetraitForm" (ngSubmit) = "Retrait(RetraitForm.value)">
+                        <mat-card-content>
+            
+                            <mat-form-field appearance="outline">
+                                <mat-label>Code de retrait</mat-label>
+                                <input matInput placeholder="Code de retrait" [(ngModel)]="retrait.codeTransaction"   
+                                name="codeTransaction" formControlName="codeTransaction"
+                                (keyup)="findCode($event)"  required>
+                            </mat-form-field>
+            
+                            <!-- ERREURES TRAITEMENT-->
+                            <mat-error *ngFor="let validation of part_validation_message.codeTransaction">
+                                <mat-error class="error-message"
+                                    *ngIf="RetraitForm.get('codeTransaction').hasError(validation.type) && (RetraitForm.get('codeTransaction').dirty || RetraitForm.get('codeTransaction').touched)">
+                                    {{validation.message}}</mat-error>
+                            </mat-error>
+            
+            
+                            <mat-form-field appearance="outline" *ngIf="afficher">
+                                <mat-label>CNI Recepteur</mat-label>
+                                <input matInput placeholder="CNIrecepteur du depot" [(ngModel)]="retrait.CNIrecepteur" name="CNIrecepteur" formControlName="CNIrecepteur" required>
+                            </mat-form-field>
+            
+                            <!-- ERREURES TRAITEMENT-->
+                            <mat-error *ngFor="let validation of part_validation_message.CNIrecepteur">
+                                <mat-error class="error-message"
+                                    *ngIf="RetraitForm.get('CNIrecepteur').hasError(validation.type) && (RetraitForm.get('CNIrecepteur').dirty || RetraitForm.get('CNIrecepteur').touched)">
+                                    {{validation.message}}</mat-error>
+                            </mat-error>
+            
+                        </mat-card-content>
+                        <button mat-raised-button color="primary" type="submit" [disabled]="!RetraitForm.valid" *ngIf="afficher">Retirer</button>
+            
+                    </form>
+            
+           </div>
+           <div class="col-md-6" style="padding-right: 70px;" *ngIf="afficher">
+                <table id="infoPartenaire" style="border: 1px solid black; width:100%; ">
+                        <tr>
+                          <th>Infos Expediteur</th>
+                          <th>Infos Guichetier</th>
+                        </tr>
+                        <tr>
+                          <td>nom Expediteur: {{codeTransaction.nomcompletExpediteur}}</td>
+                          <td>Nom Guichetier: {{nomcomplet}}</td>
+                          
+                        </tr>
+                        <tr>
+                          <td>Nom Recepteur: {{codeTransaction.nomcompletRecepteur}}</td>
+                          <td>Username: {{username}}</td>
+                        </tr>
+          
+                        <tr>
+                          <td>Telephone Expediteur: {{codeTransaction.telExpediteur}}</td>
+                          <td>Telephone: {{tel}}</td>
+                        </tr>
+                        <tr>
+                                <td colspan="2">Email: {{email}}</td>
+                              </tr>
+                              <tr>
+                                <td colspan="2">Montant: {{codeTransaction.montant}} </td>
+                                  </tr>      
+          
+                      </table>
+           </div>
+       </div>
+    </mat-card>
+</div>
+<!--Debut Footer-->
+
+<app-footer></app-footer>

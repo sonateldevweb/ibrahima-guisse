@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Accueil</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row class="ion-padding">
+      <ion-col col-6>
+        <ion-card class="ion-padding ion-text-center" [routerLink]="['/transactions']" routerLinkActive="router-link-active"  color="danger">
+          <ion-icon name="cash"></ion-icon>
+          <h2>Transactions</h2>
+        </ion-card>
+      </ion-col>
+      <ion-col col-6>
+        <ion-card class="ion-padding ion-text-center" [routerLink]="['/mestransactions']" routerLinkActive="router-link-active"  color="secondary">
+          <ion-icon name="md-list-box"></ion-icon>
+          <h2>Mes Transactions</h2>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

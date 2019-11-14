@@ -1,0 +1,67 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" routerLink="/utilisateur">{{titre }} </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+    aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+      <li *ngIf=" !isUser() && !isCaissier() " class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" routerLinkActive='active' id="navbarDropdown" role="button"
+          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Utilisateur
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" routerLink="/ajoutUtil" *ngIf="!isUser() && !isCaissier()">Ajouter</a>
+          <a class="dropdown-item" routerLink="/listeUtil" *ngIf="isSuperAdmin() || isAdmin()">Mes Utilisateurs</a>
+          <a class="dropdown-item" routerLink="/listeUsers" *ngIf="isPartenaire() || isPartAdamin()">Mes Utilisateurs</a>
+         
+        </div>
+      </li>
+      <li *ngIf="isSuperAdmin() || isAdmin() ||isCaissier() " class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" routerLinkActive='active' id="navbarDropdown" role="button"
+          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Partenaire
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a *ngIf="isSuperAdmin() || isAdmin()" class="dropdown-item" routerLink="/ajoutPart">Ajouter</a>
+          <a *ngIf="isSuperAdmin() || isAdmin()" class="dropdown-item" routerLink="/listePart">Lister</a>
+          <a *ngIf="isCaissier() " class="dropdown-item" routerLink="/depot">Depot</a>
+
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" routerLink="#">Something else here</a>
+        </div>
+      </li>
+      <li *ngIf="isSuperAdmin() || isAdmin()" class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" routerLinkActive='active' id="navbarDropdown" role="button"
+          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Compte
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a *ngIf="isSuperAdmin() || isAdmin()" class="dropdown-item" routerLink="/compte"
+            routerLinkActive='active'>Créer un Compte</a>
+          <a class="dropdown-item" routerLink="#">Lister</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" routerLink="#">Something else here</a>
+        </div>
+      </li>
+      <li *ngIf="isUser() || isPartAdamin() " class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" routerLinkActive='active' id="navbarDropdown" role="button"
+          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Transactions
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a *ngIf="isUser() || isPartAdamin() " class="dropdown-item" routerLink="/envoie" routerLinkActive='active'>Envoie</a>
+          <a *ngIf="isUser() || isPartAdamin() " class="dropdown-item" routerLink="/retrait">Retrait</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" routerLink="#">Liste des Transactions</a>
+        </div>
+      </li>
+
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <a (click)="logout()"> <button class="btn btn-outline-danger"><mat-icon md-5>exit_to_app</mat-icon></button> </a>
+
+    </form>
+  </div>
+</nav>

@@ -1,0 +1,180 @@
+<app-navbar></app-navbar>
+
+<!-- partie corps du component-->
+
+<div class="container  pt-3">
+  <div class="row">
+    <div class="col-lg mx-auto">
+      <div class="card rouded-0">
+        <div class="card-header">
+          <h3 style="color: black; font-weight:300px;"> Ajouter Partenaire</h3>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="PartenairesForm" #ImageForm="ngForm" (ngSubmit)=" ajoutPart(Image,PartenairesForm.value)">
+            <div class="row">
+              <div class="col-md-6 mx-auto">
+                <div class="form-group">
+                  <label style="color: black ; float:left;">Raison Sociale</label>
+                  <input type="text" formControlName="raisonsociale" [(ngModel)]="partenaire.raisonSociale"
+                    class="form-control rounded-0" required>
+
+                  <!-- ERREURES TRAITEMENT-->
+                  <div class="container" style="background-color:rgb(230, 191, 191)">
+                    <mat-error *ngFor="let validation of part_validation_message.raisonsociale">
+                      <mat-error class="error-message"
+                        *ngIf="PartenairesForm.get('raisonsociale').hasError(validation.type) && (PartenairesForm.get('raisonsociale').dirty || PartenairesForm.get('raisonsociale').touched)">
+                        {{validation.message}}</mat-error>
+                    </mat-error>
+                  </div>
+
+                </div>
+                <div class="form-group">
+                  <label style="color: black; float:left;">Ninea</label>
+                  <input type="text" [(ngModel)]="partenaire.ninea" formControlName="ninea"
+                    class="form-control rounded-0" name="ninea" required>
+
+                  <!-- ERREURES TRAITEMENT-->
+                  <div class="container" style="background-color:rgb(230, 191, 191)">
+                    <mat-error *ngFor="let validation of part_validation_message.ninea">
+                      <mat-error class="error-message"
+                        *ngIf="PartenairesForm.get('ninea').hasError(validation.type) && (PartenairesForm.get('ninea').dirty || PartenairesForm.get('ninea').touched)">
+                        {{validation.message}}</mat-error>
+                    </mat-error>
+                  </div>
+
+
+                </div>
+                <div class="form-group">
+                  <label style="color: black ; float:left;">Username</label>
+                  <input type="text" [(ngModel)]="partenaire.username" formControlName="username"
+                    class="form-control rounded-0" name="username" required>
+
+                  <!-- ERREURES TRAITEMENT-->
+                  <div class="container" style="background-color:rgb(230, 191, 191)">
+                    <mat-error *ngFor="let validation of part_validation_message.username">
+                      <mat-error class="error-message"
+                        *ngIf="PartenairesForm.get('username').hasError(validation.type) && (PartenairesForm.get('username').dirty || PartenairesForm.get('username').touched)">
+                        {{validation.message}}</mat-error>
+                    </mat-error>
+                  </div>
+
+
+                </div>
+                <div class="form-group">
+                  <label style="color: black; float:left;">Password</label>
+                  <input type="text" [(ngModel)]="partenaire.password" formControlName="password"
+                    class="form-control rounded-0" name="password" required>
+
+                  <!-- ERREURES TRAITEMENT-->
+                  <div class="container" style="background-color:rgb(230, 191, 191)">
+                    <mat-error *ngFor="let validation of part_validation_message.password">
+                      <mat-error class="error-message"
+                        *ngIf="PartenairesForm.get('password').hasError(validation.type) && (PartenairesForm.get('password').dirty || PartenairesForm.get('password').touched)">
+                        {{validation.message}}</mat-error>
+                    </mat-error>
+                  </div>
+
+                </div>
+
+                <div class="form-group">
+                  <img [src]="imageUrl" alt="default" style="width:100px; height:100px;">
+
+                  <input type="file" [(ngModel)]="partenaire.imageName" formControlName="image" name="image"
+                    class="form-control rounded-0" #Image accept="image/*"
+                    (change)="handleFileInput($event.target.files)" required>
+
+                  <!-- ERREURES TRAITEMENT-->
+                  <div class="container" style="background-color:rgb(230, 191, 191)">
+                    <mat-error *ngFor="let validation of part_validation_message.image">
+                      <mat-error class="error-message"
+                        *ngIf="PartenairesForm.get('image').hasError(validation.type) && (PartenairesForm.get('image').dirty || PartenairesForm.get('image').touched)">
+                        {{validation.message}}</mat-error>
+                    </mat-error>
+                  </div>
+
+                </div>
+
+              </div>
+
+              <div class="col-md-6 mx-auto">
+                <div class="form-group">
+                  <label style="color: black ; float:left;">Nom Complet</label>
+                  <input type="text" [(ngModel)]="partenaire.nomcomplet" formControlName="nomcomplet"
+                    class="form-control rounded-0" name="nomcomplet" required>
+
+                  <!-- ERREURES TRAITEMENT-->
+                  <div class="container" style="background-color:rgb(230, 191, 191)">
+                    <mat-error *ngFor="let validation of part_validation_message.nomcomplet">
+                      <mat-error class="error-message"
+                        *ngIf="PartenairesForm.get('nomcomplet').hasError(validation.type) && (PartenairesForm.get('nomcomplet').dirty || PartenairesForm.get('nomcomplet').touched)">
+                        {{validation.message}}</mat-error>
+                    </mat-error>
+                  </div>
+
+
+                </div>
+
+                <div class="form-group">
+                  <label style="color: black; float:left;">Adresse</label>
+                  <input type="text" [(ngModel)]="partenaire.adresse" formControlName="adresse"
+                    class="form-control rounded-0" name="adresse" required>
+
+                  <!-- ERREURES TRAITEMENT-->
+                  <div class="container" style="background-color:rgb(230, 191, 191)">
+                    <mat-error *ngFor="let validation of part_validation_message.adresse">
+                      <mat-error class="error-message"
+                        *ngIf="PartenairesForm.get('adresse').hasError(validation.type) && (PartenairesForm.get('adresse').dirty || PartenairesForm.get('adresse').touched)">
+                        {{validation.message}}</mat-error>
+                    </mat-error>
+                  </div>
+
+
+                </div>
+                <div class="form-group">
+                  <label style="color: black ; float:left;">Telephone</label>
+                  <input type="text" [(ngModel)]="partenaire.tel" formControlName="telephone"
+                    class="form-control rounded-0" name="telephone" required>
+
+
+                  <!-- ERREURES TRAITEMENT-->
+                  <div class="container" style="background-color:rgb(230, 191, 191)">
+                    <mat-error *ngFor="let validation of part_validation_message.telephone">
+                      <mat-error class="error-message"
+                        *ngIf="PartenairesForm.get('telephone').hasError(validation.type) && (PartenairesForm.get('telephone').dirty || PartenairesForm.get('telephone').touched)">
+                        {{validation.message}}</mat-error>
+                    </mat-error>
+                  </div>
+
+
+                </div>
+                <div class="form-group">
+                  <label style="color: black; float:left;">Email</label>
+                  <input type="email" [(ngModel)]="partenaire.email" formControlName="email"
+                    class="form-control rounded-0" name="email" required>
+
+                  <!-- ERREURES TRAITEMENT-->
+                  <div class="container" style="background-color:rgb(230, 191, 191)">
+                    <mat-error *ngFor="let validation of part_validation_message.email">
+                      <mat-error class="error-message"
+                        *ngIf="PartenairesForm.get('email').hasError(validation.type) && (PartenairesForm.get('email').dirty || PartenairesForm.get('email').touched)">
+                        {{validation.message}}</mat-error>
+                    </mat-error>
+                  </div>
+
+
+                </div>
+
+              </div>
+
+            </div>
+            <button type="submit" class="btn btn-success float-right"
+              [disabled]="!PartenairesForm.valid">Enregistrer</button>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<app-footer></app-footer>

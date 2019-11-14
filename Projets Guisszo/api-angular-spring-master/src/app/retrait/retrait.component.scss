@@ -1,0 +1,30 @@
+#infoPartenaire{
+    font-size: 12px;
+    float: left;
+    
+}
+
+
+.table{
+    background-color: rgb(247, 240, 240) !important;
+    width: 100%;
+  }
+  #entete{
+    text-align: center;
+  }
+  .ligne{
+    background-color: rgba(199, 190, 190, 0.623) !important;
+    display: block;
+    height: 100px;
+    padding: 30px;
+    margin: 20px;
+  }
+  .ligne .second{
+    
+    display: inline-block;
+   margin-right: 70px;
+   position: relative;
+  }
+  #bastab{
+    text-align: right;
+  }
